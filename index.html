@@ -1,0 +1,790 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#493047">
+<title>My Moon ♡ | Our Little Poetry Book</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
+
+:root {
+  --ink: #583449;
+  --rose: #bd587b;
+  --paper: #fff0d9;
+  --pink: #ffe0e5;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: 'Caveat', cursive;
+  font-size: 21px;
+  background:
+    radial-gradient(ellipse at 15% 10%, #8a607c, transparent 35%),
+    radial-gradient(ellipse at 90% 20%, #534365, transparent 35%),
+    linear-gradient(160deg, #241d34, #69445e, #30243c);
+  overflow-x: hidden;
+}
+
+button, input, textarea { font: inherit; }
+
+button { cursor: pointer; }
+
+a { color: #9f3f67; }
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+  padding: 18px 8px;
+}
+
+nav a {
+  color: var(--ink);
+  background: #ffe6d6;
+  padding: 7px 12px;
+  border-radius: 13px 5px;
+  text-decoration: none;
+  box-shadow: 0 3px #d69aaa;
+}
+
+.paper {
+  width: min(94%, 900px);
+  margin: 22px auto;
+  padding: clamp(18px, 4vw, 32px);
+  position: relative;
+  background:
+    repeating-linear-gradient(
+      transparent 0px,
+      transparent 31px,
+      #d5a7a52b 32px
+    ),
+    var(--paper);
+  border: 2px dashed #d8a2a0;
+  border-radius: 9px 5px 14px 6px;
+  box-shadow: 0 10px 28px #170d253d;
+}
+
+.hero { text-align: center; transform: rotate(-.3deg); }
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(32px, 7vw, 53px);
+  line-height: 1.2;
+  margin: 12px 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 31px;
+  font-weight: 500;
+  margin: 5px 0 18px;
+}
+
+.subtitle {
+  font-size: clamp(22px, 4vw, 29px);
+  line-height: 1.5;
+}
+
+.script {
+  color: #a74369;
+  font-size: 31px;
+}
+
+.big-heart {
+  display: inline-block;
+  font-size: 42px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.16); }
+}
+
+.sticker {
+  font-size: 29px;
+  margin: 0 5px;
+}
+
+.book {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin: 20px auto;
+  filter: drop-shadow(0 8px 7px #35203555);
+}
+
+.page {
+  min-width: 0;
+  min-height: 360px;
+  padding: clamp(15px, 3vw, 28px);
+  background: #fff4df;
+  border: 1px solid #d5ad8c;
+  overflow-wrap: anywhere;
+}
+
+.page:first-child {
+  border-radius: 10px 2px 2px 10px;
+  border-right: 2px solid #d4b08d;
+}
+
+.page:last-child {
+  border-radius: 2px 10px 10px 2px;
+}
+
+.poem-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 3vw, 27px);
+  text-align: center;
+  line-height: 1.35;
+}
+
+.underline {
+  height: 2px;
+  width: 65%;
+  margin: 14px auto 20px;
+  background: #dc8ea5;
+  transform: rotate(-2deg);
+}
+
+.poem-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: clamp(19px, 2.4vw, 24px);
+  line-height: 1.55;
+}
+
+.signature {
+  text-align: right;
+  color: #a3446a;
+  font-size: 23px;
+  margin-top: 22px;
+  overflow-wrap: anywhere;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 15px 0;
+}
+
+.btn {
+  border: none;
+  background: var(--rose);
+  color: white;
+  padding: 9px 17px;
+  border-radius: 18px 7px;
+  box-shadow: 0 4px #883b5c;
+}
+
+.btn:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.note {
+  background: #ffe3e5;
+  padding: 18px;
+  border-radius: 8px 15px 5px 12px;
+  margin: 13px 0;
+  transform: rotate(-.4deg);
+  line-height: 1.45;
+}
+
+.note:nth-child(even) {
+  background: #f7e4c9;
+  transform: rotate(.4deg);
+}
+
+.note h3 {
+  font-size: 25px;
+  margin: 0 0 8px;
+}
+
+label {
+  display: block;
+  margin: 14px 0 5px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #d3a0a0;
+  border-radius: 7px;
+  color: var(--ink);
+  background: #fffaf0;
+}
+
+textarea {
+  min-height: 170px;
+  resize: vertical;
+}
+
+.small {
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+footer {
+  text-align: center;
+  color: #ffe3eb;
+  padding: 20px 12px 35px;
+  font-size: 25px;
+}
+
+#toast {
+  position: fixed;
+  z-index: 10;
+  bottom: 15px;
+  left: 5%;
+  width: 90%;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  background: #fff0d9;
+  color: var(--ink);
+  box-shadow: 0 5px 20px #0003;
+}
+
+.float-heart {
+  position: fixed;
+  z-index: 2;
+  bottom: -35px;
+  pointer-events: none;
+  animation: floatUp 7s linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-115vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+[hidden] { display: none !important; }
+
+@media (max-width: 650px) {
+  .book { grid-template-columns: 1fr; }
+
+  .page {
+    min-height: 0;
+    padding: 22px 17px;
+  }
+
+  .page:first-child {
+    border-radius: 10px 10px 2px 2px;
+    border-right: 1px solid #d5ad8c;
+    border-bottom: 2px dashed #d5ad8c;
+  }
+
+  .page:last-child {
+    border-radius: 2px 2px 10px 10px;
+  }
+
+  nav { gap: 8px; }
+  nav a { font-size: 19px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#home">♡ Home</a>
+  <a href="#poems">📖 My Poems</a>
+  <a href="#notes">💌 Love Notes</a>
+  <a href="#memories">🌷 Memories</a>
+  <a href="#add">✍️ Add Poem</a>
+</nav>
+
+<header class="paper hero" id="home">
+  <div class="big-heart">♡</div>
+  <p>✧ A LITTLE BOOK OF US ✧</p>
+  <h1>For My Moon 🌙</h1>
+
+  <p class="subtitle">
+    I made a little universe just for you.<br>
+    A place where my words can live forever,<br>
+    and every page holds a piece of my heart. 🤍
+  </p>
+
+  <p class="script">Hey, my moon… ♡</p>
+  <p>With all my love, your Panda 🧸</p>
+
+  <a class="btn" href="#poems"
+     style="display:inline-block;text-decoration:none">
+    Open My Heart 💌
+  </a>
+</header>
+
+<section class="paper" id="poems">
+  <h2>Our Little Poetry Book 📖</h2>
+  <p style="text-align:center">
+    Three pieces of my heart, just for you. ♡
+  </p>
+
+  <div class="book" aria-live="polite">
+    <article class="page">
+      <div class="poem-title" id="title1"></div>
+      <div class="underline"></div>
+      <div class="poem-text" id="text1"></div>
+      <div class="signature" id="sign1"></div>
+    </article>
+
+    <article class="page">
+      <div class="poem-title" id="title2"></div>
+      <div class="underline"></div>
+      <div class="poem-text" id="text2"></div>
+      <div class="signature" id="sign2"></div>
+    </article>
+  </div>
+
+  <div class="controls">
+    <button class="btn" id="prev" type="button">
+      ← Previous
+    </button>
+
+    <span id="counter">Poems 1–2</span>
+
+    <button class="btn" id="next" type="button">
+      Next →
+    </button>
+  </div>
+</section>
+
+<section class="paper" id="notes">
+  <h2>Little Love Notes 💌</h2>
+
+  <div class="note">
+    <h3>For my favourite human ♡</h3>
+    You don't even realise how much happiness
+    you bring into my little world.
+    Sometimes I look at you and wonder how I got
+    so lucky to call you mine. 🥹
+  </div>
+
+  <div class="note">
+    <h3>When the world feels heavy 🌙</h3>
+    My moon, you don't have to be strong all the time.
+    You deserve softness, peace, and a hug that makes
+    everything feel a little better.
+    If I could, I'd hold you until every worry went quiet.
+  </div>
+
+  <div class="note">
+    <h3>A little promise 🤍</h3>
+    I'll keep finding new ways to love you,
+    new reasons to admire you,
+    and new words to remind you that
+    you mean more to me than I can explain.
+  </div>
+</section>
+
+<section class="paper" id="memories">
+  <h2>Our Little Universe ✨</h2>
+
+  <div class="note">
+    <h3>♡ My favourite person</h3>
+    Out of all the people in this world,
+    somehow my heart found its favourite in you.
+  </div>
+
+  <div class="note">
+    <h3>☾ My safe place</h3>
+    There is something about being with you
+    that makes even ordinary moments feel special.
+  </div>
+
+  <div class="note">
+    <h3>🌷 More memories to come</h3>
+    More silly conversations, more hugs,
+    more pictures, more poems, and more little
+    moments I will want to remember forever.
+  </div>
+</section>
+
+<section class="paper" id="add">
+  <h2>Add Another Poem ✍️</h2>
+
+  <p class="small">
+    Whenever you write something new for him,
+    come here and add it to your book.
+    Your saved poems stay in this browser on this device.
+  </p>
+
+  <form id="poemForm">
+    <label for="newTitle">Poem title ♡</label>
+    <input
+      id="newTitle"
+      type="text"
+      maxlength="100"
+      placeholder="A little piece of forever"
+      required
+    >
+
+    <label for="newText">Your poem 💌</label>
+    <textarea
+      id="newText"
+      maxlength="12000"
+      placeholder="Write what your heart wants to tell him..."
+      required
+    ></textarea>
+
+    <label for="newSign">Your signature</label>
+    <input
+      id="newSign"
+      type="text"
+      maxlength="100"
+      placeholder="— Yours always, Panda ♡"
+    >
+
+    <div class="controls">
+      <button class="btn" type="submit">
+        Save My Poem ♡
+      </button>
+
+      <button class="btn" id="export" type="button">
+        Download Backup
+      </button>
+    </div>
+  </form>
+
+  <p class="small">
+    ♡ Keep a backup of your poems.
+    Clearing browser data can erase locally saved poems.
+    Newly added poems will not automatically appear
+    on the public website link.
+  </p>
+</section>
+
+<section class="paper">
+  <h2>How to Share Our Book 🔗</h2>
+
+  <div class="note">
+    <h3>Make a website link</h3>
+    1. Save this code as <b>index.html</b>.<br>
+    2. Open
+    <a href="https://pages.github.com/">GitHub Pages</a>.<br>
+    3. Follow its instructions to create a repository
+    and upload your HTML file.<br>
+    4. Enable Pages in the repository settings.<br>
+    5. Open your published link and send it to him. ♡
+  </div>
+
+  <div class="note">
+    <h3>Important, my Panda 🤍</h3>
+    The poems you add using the form are saved only
+    in your current browser. To add those poems to
+    the public website, update the code and publish
+    the changed file again.
+  </div>
+</section>
+
+<footer>
+  Made with all my love ♡
+  <div class="script">Forever yours, My Moon 🌙</div>
+</footer>
+
+<div id="toast" role="status" hidden></div>
+
+<script>
+"use strict";
+
+/* YOUR THREE ORIGINAL POEMS */
+
+const starterPoems = [
+  {
+    title: "A Little Things About You 🥹🤍",
+    text: `I love you most when sleep begins to win,
+When little sleepy eyes slowly give in.
+You rub your drowsy face the way babies do—
+God, how am I supposed to not fall for you? 🥹
+Your tiny button nose, your lips so divine,
+That soft little face makes me wish you were mine.
+In every single life, in every sweet dream,
+You are my safe space, my favorite theme. 🤍
+And oh, that sleepy voice, so quiet and low,
+The gentle little boy inside starts to show.
+You try to stay awake, but your eyes say no,
+And with every heavy blink, my feelings just grow.
+You're a grown-up man with a soft-hearted spark,
+A thousand tiny reasons why you hold my heart.
+The way you fight off sleep, refusing to give in,
+With those half-closed eyes and that adorable grin. 🫶🏻
+And when you're half-asleep, searching for me,
+Your arms find my waist so instinctively.
+You pull me in closer, as if your heart knows
+That even without words, that’s where comfort flows.
+In that quiet moment when you hold me near,
+The whole world fades; there’s nothing left to fear.
+You don’t have to speak, you don’t have to try—
+Your warm, gentle hug says what words can't reply.
+I wish I could bottle these drowsy little days,
+Your baby-soft voice, your affectionate ways.
+Your messy, sleepy face, your eyes closing slow,
+And the side of your heart that only I get to know.
+Because everyone sees the man that you are,
+But I see my baby, my moon, and my star.
+The one who acts grown, but still melts me somehow,
+The one I want to hold forever and now.
+So sleep, my sweet love, let your tired eyes close,
+I'll love every version of you that I know.
+The man who stands tall, the boy hiding inside,
+And the sleepy little soul right here by my side.
+If love had a face, I know what I'd see—
+A sleepy little boy holding tight to me.
+And if home is a feeling, then darling, it's true:
+My favorite place in this world is with you.`,
+    sign: "— Ur betu ♡"
+  },
+
+  {
+    title: "I Notice You 🤎",
+    text: `His brown eyes hold a universe,
+A thousand feelings, a thousand words.
+And those messy hairs he never gets right,
+Somehow make him my favourite sight.
+Those chubby cheeks I wanna adore,
+The kind of cute I could never ignore.
+A little smile, a stupid grin,
+And there goes my heart, falling again.
+He doesn't need to dress like a king,
+Or promise me stars, or anything.
+Just let him be him, in his own little way,
+And I'll find a hundred reasons to stay.
+Maybe he doesn't know what he does to me,
+How he's my favourite place to be.
+How in a world so loud and wide,
+My heart feels home when he's by my side.
+It's not just his eyes, his hair, his face,
+It's the warmth I find in his embrace.
+And if someone asks what love looks like to me,
+I'll smile and say, “Have you seen him?
+Those brown eyes, messy hair, chubby cheeks…
+He's every little thing my heart seeks.`,
+    sign: "— Ur Panda ♡"
+  },
+
+  {
+    title: "My Moon 🌙❤️",
+    text: `I Think I Was Already Falling for You 🌙❤️
+
+I tried so hard not to fall in love with u.
+I tried really hard not to text u,
+Not to get lost in ur eyes,
+Not to melt at ur gentleness,
+Not to let my heart get attached to u.
+I tried so hard not to love u,
+But I failed.
+And I guess I failed every single time
+Because somewhere along the way,
+My heart had already chosen u.
+Maybe it was during our first conversation,
+Or the moment I first saw u.
+Maybe it was when u touched my face
+For the very first time,
+With so much love and care
+That I forgot how to guard my heart.
+Maybe it was in the little things,
+When u remembered my dates,
+When u looked at me in a way
+That made me forget the whole world,
+When I found myself getting lost
+In those shiny eyes of urs.
+I don't know exactly when it happened.
+I don't know which moment made me fall.
+All I know is,
+While I was trying so hard
+Not to fall in love with u…
+I think I was already in love. ❤️🌙`,
+    sign: "— Ur puchku 😚"
+  }
+];
+
+/* STORAGE: NEW VERSION, SO OLD TEST DATA WON'T REPLACE YOUR POEMS */
+
+const STORAGE_KEY = "myMoonPoetryBook_v3";
+
+let poems = starterPoems.map(poem => ({ ...poem }));
+
+try {
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  if (saved !== null) {
+    const parsed = JSON.parse(saved);
+
+    if (Array.isArray(parsed)) {
+      const valid = parsed.filter(poem =>
+        poem &&
+        typeof poem.title === "string" &&
+        typeof poem.text === "string" &&
+        typeof (poem.sign || "") === "string"
+      );
+
+      poems = valid.length ? valid : starterPoems.map(p => ({...p}));
+    }
+  }
+} catch (error) {
+  poems = starterPoems.map(p => ({...p}));
+}
+
+let pageIndex = 0;
+
+const byId = id => document.getElementById(id);
+
+function renderBook() {
+  const left = poems[pageIndex];
+  const right = poems[pageIndex + 1];
+
+  byId("title1").textContent = left ? left.title : "A new page ♡";
+  byId("text1").textContent = left ? left.text : "Add another poem to fill this page.";
+  byId("sign1").textContent = left ? left.sign : "";
+
+  byId("title2").textContent = right ? right.title : "More words to come…";
+  byId("text2").textContent = right ? right.text : "Your next poem is waiting to be written. ♡";
+  byId("sign2").textContent = right ? right.sign : "";
+
+  byId("counter").textContent =
+    poems.length === 0
+      ? "Your book is waiting for a poem ♡"
+      : `Poems ${pageIndex + 1}–${Math.min(pageIndex + 2, poems.length)} of ${poems.length}`;
+
+  byId("prev").disabled = pageIndex === 0;
+  byId("next").disabled = pageIndex + 2 >= poems.length;
+}
+
+function showMessage(message) {
+  const toast = byId("toast");
+  toast.textContent = message;
+  toast.hidden = false;
+
+  if (showMessage.timer) clearTimeout(showMessage.timer);
+
+  showMessage.timer = setTimeout(() => {
+    toast.hidden = true;
+  }, 2800);
+}
+
+function savePoems() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(poems));
+    return true;
+  } catch (error) {
+    showMessage("Could not save. Please download a backup first.");
+    return false;
+  }
+}
+
+byId("prev").addEventListener("click", () => {
+  pageIndex = Math.max(0, pageIndex - 2);
+  renderBook();
+});
+
+byId("next").addEventListener("click", () => {
+  pageIndex = Math.min(
+    Math.max(0, poems.length - 1),
+    pageIndex + 2
+  );
+  renderBook();
+});
+
+byId("poemForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const title = byId("newTitle").value.trim();
+  const text = byId("newText").value.trim();
+  const sign = byId("newSign").value.trim() || "— Yours always ♡";
+
+  if (!title || !text) {
+    showMessage("Add a title and your poem first ♡");
+    return;
+  }
+
+  poems.push({ title, text, sign });
+
+  if (!savePoems()) {
+    poems.pop();
+    return;
+  }
+
+  pageIndex = Math.floor((poems.length - 1) / 2) * 2;
+  renderBook();
+  event.target.reset();
+
+  showMessage("Your poem has a home in our book! ♡");
+
+  byId("poems").scrollIntoView({ behavior: "smooth" });
+});
+
+byId("export").addEventListener("click", () => {
+  const backup = new Blob(
+    [JSON.stringify(poems, null, 2)],
+    { type: "application/json" }
+  );
+
+  const url = URL.createObjectURL(backup);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "my-moon-poems-backup.json";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+  showMessage("Your poetry backup is downloading ♡");
+});
+
+/* FLOATING HEARTS */
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  setInterval(() => {
+    const heart = document.createElement("span");
+
+    heart.className = "float-heart";
+    heart.textContent = ["♡", "♥", "💕", "✧"][
+      Math.floor(Math.random() * 4)
+    ];
+
+    heart.style.left = Math.random() * 96 + "vw";
+    heart.style.fontSize = (16 + Math.random() * 16) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7500);
+  }, 1200);
+}
+
+/* SHOW THE POEMS */
+
+renderBook();
+</script>
+
+</body>
+</html>
